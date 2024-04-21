@@ -5,7 +5,6 @@ export const tokenize = (value) => {
     .replace(/[?!;@#$%&]/g, " $& ")
     .replace(/[\]\[\(\)\{\}<>]/g, " $& ")
     .replace(/('s|'m|'d|'ll|'re|'ve|n't) /gi, " $1 ")
-    .replace(/([a-z])(\+)([a-z0-9])/g, "$1 $2 $3")
     .replace(/\, /g, " , ")
     .replace(/\. /g, " . ")
     .replace(/['’] /g, " ' ")

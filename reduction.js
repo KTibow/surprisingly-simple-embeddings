@@ -26,7 +26,7 @@ content = content.split("\n").slice(0, 3000).join(" ");
 let contentT = tokenize(content);
 
 let progress = 0;
-while (progress < 1035) {
+while (progress < 1036) {
   const token = contentT.shift();
   if (tokensOccurences[token] == undefined) {
     tokensOccurences[token] = 0;
