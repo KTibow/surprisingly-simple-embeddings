@@ -13,6 +13,7 @@ export const tokenize = (value) => {
     .replaceAll("esp8266", "esp 8266")
     .replaceAll("dht22", "dht 22")
     .replaceAll("dht11", "dht 11")
+    .replaceAll("b-parasite", "b parasite")
     .replaceAll("nfc/rfid", "nfc rfid")
     .replaceAll("fastled", "fast led")
     .replaceAll("neopixelbus", "neopixel bus")
