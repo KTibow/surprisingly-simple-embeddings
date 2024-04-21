@@ -11,6 +11,7 @@ console.log("listing used tokens");
 const tokensOccurences = {};
 let docCount = 0;
 for (const file of await glob("esphome-docs/**/*.rst")) {
+  if (file == "esphome-docs/guides/supporters.rst") continue;
   const content = await readFile(file, "utf8");
   for (const token of new Set(tokenize(content))) {
     if (!tokensOccurences[token]) tokensOccurences[token] = 0;
@@ -21,10 +22,16 @@ for (const file of await glob("esphome-docs/**/*.rst")) {
 
 let content = await readFile("./wiki-100k.txt", "utf8");
 content = content.replace(/^#.*\n/gm, "");
-content = content.split("\n").slice(0, 6000).join(" ");
-const contentT = tokenize(content);
-for (const token of contentT) {
-  tokensOccurences[token] = tokensOccurences[token] || 0;
+content = content.split("\n").slice(0, 3000).join(" ");
+let contentT = tokenize(content);
+
+let progress = 0;
+while (progress < 1036) {
+  const token = contentT.shift();
+  if (tokensOccurences[token] == undefined) {
+    tokensOccurences[token] = 0;
+    progress++;
+  }
 }
 
 console.log("loading embeddings");
@@ -42,10 +49,11 @@ for (const embedding of embeddingsStr.split("\n")) {
     `${w} ${idf.toFixed(3)} ${embedding
       .split(" ")
       .slice(1)
-      .map((x) => x.slice(0, 5))
+      .map((x) => parseFloat(x).toFixed(3))
       .join(" ")}`
   );
 }
+rows.sort();
 
 console.log("writing", rows.length, "rows");
 await writeFile("./glove-25d-reduced.txt", rows.join("\n"));
