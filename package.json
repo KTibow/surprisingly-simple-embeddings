@@ -1,0 +1,7 @@
+{
+  "type": "module",
+  "devDependencies": {
+    "fast-glob": "^3.3.2",
+    "tqdm": "^2.0.3"
+  }
+}
