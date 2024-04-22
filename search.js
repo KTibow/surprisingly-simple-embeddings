@@ -2,7 +2,7 @@ import glob from "fast-glob";
 import { readFile } from "fs/promises";
 import { tokenize } from "./_lib.js";
 
-const embeddingsStr = await readFile("./glove-25d-reduced.txt", "utf8");
+const embeddingsStr = await readFile("./glove-50d-reduced.txt", "utf8");
 const embeddings = Object.fromEntries(
   embeddingsStr.split("\n").map((x) => [
     x.split(" ")[0],
@@ -17,7 +17,7 @@ const embeddings = Object.fromEntries(
 );
 
 const embed = (tokens) => {
-  let output = Array.from({ length: 25 }, () => 0);
+  let output = Array.from({ length: 50 }, () => 0);
   let total = 0;
   for (let token of tokens) {
     if (!embeddings[token]) {
