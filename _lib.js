@@ -17,6 +17,8 @@ export const tokenize = (value) => {
     .replaceAll("neopixelbus", "neopixel bus")
     .replaceAll("neopixel", "neo pixel")
     .replaceAll("h-bridge", "h bridge")
+    .replaceAll("eco_", "co")
+    .replaceAll("co_", "co")
     .replaceAll("rgbw", "rgb white")
     .replaceAll("rgbww", "rgb cold warm")
     .replaceAll("rgbct", "rgb temperature brightness")
