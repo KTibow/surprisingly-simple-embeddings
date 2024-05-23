@@ -9,4 +9,4 @@ turns out we had this figured out a while ago. just
 3. average these vectors based on how common the token is
 4. use the average vector as your embedding
 
-here, we use glove's 25d twitter-based token embeddings, but we remove uncommon tokens. that way, when we compress the embeddings, it's under 0.5mb.
+here, we use glove's 50d twitter-based token embeddings, but we remove uncommon tokens. that way, when we compress the embeddings, it's relatively small.
