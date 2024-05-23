@@ -9,10 +9,11 @@ export const tokenize = (value) => {
     .replace(/\. /g, " . ")
     .replace(/['’] /g, " ' ")
     .replace(/["“”]/g, " '' ");
-  value = value.replace(/[-+]?[.\d]*[\d]+[:,.\d]*|²/g, " <number> ");
+  value = value.replace(/[-+]?[.\d]*[\d]+[:,.\d]*|²|₂/g, " <number> ");
   value = value
     .replaceAll("b-parasite", "b parasite")
     .replaceAll("nfc/rfid", "nfc rfid")
+    .replaceAll("i/o", "io")
     .replaceAll("fastled", "fast led")
     .replaceAll("neopixelbus", "neopixel bus")
     .replaceAll("neopixel", "neo pixel")
